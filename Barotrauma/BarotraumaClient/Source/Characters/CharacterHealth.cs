@@ -638,6 +638,11 @@ namespace Barotrauma
                     HUDLayoutSettings.HealthBarAreaRight.Y - (int)(character.Inventory.SlotPositions.Max(s => s.Y) + Inventory.EquipIndicator.size.Y * Inventory.UIScale * 2) - HUDLayoutSettings.HealthBarAreaRight.Height);
                 healthBarShadow.RectTransform.ScreenSpaceOffset = healthBar.RectTransform.ScreenSpaceOffset;
             }
+            else if (character.Inventory.HidePersonalSlots)
+            {
+                healthBar.RectTransform.ScreenSpaceOffset = healthBarShadow.RectTransform.ScreenSpaceOffset = 
+                    new Point(0, character.Inventory.slots[0].Rect.Bottom - healthBar.RectTransform.AbsoluteOffset.Y - healthBar.Rect.Height);                
+            }
             else
             {
                 healthBar.RectTransform.ScreenSpaceOffset = healthBarShadow.RectTransform.ScreenSpaceOffset = Point.Zero;
@@ -686,7 +691,7 @@ namespace Barotrauma
                         pos.Y += iconSize + (int)(5 * GUI.Scale);
                 }
 
-                pos = afflictionArea.Location;
+                pos = afflictionArea.Location + healthBar.RectTransform.ScreenSpaceOffset;
                 foreach (Pair<AfflictionPrefab, string> statusIcon in statusIcons)
                 {
                     var slot = GUI.Style.GetComponentStyle("AfflictionIconSlot");

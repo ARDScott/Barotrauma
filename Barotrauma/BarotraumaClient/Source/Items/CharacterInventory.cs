@@ -1,4 +1,5 @@
-﻿using Barotrauma.Items.Components;
+﻿using Barotrauma.Extensions;
+using Barotrauma.Items.Components;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -19,12 +20,8 @@ namespace Barotrauma
             Center
         }
 
-        private static Sprite toggleArrow;
-        private float arrowAlpha;
-
-        //which slot is the toggle arrow drawn above
-        private int toggleArrowSlotIndex;
-
+        const InvSlotType PersonalSlots = InvSlotType.Card | InvSlotType.Headset | InvSlotType.InnerClothes | InvSlotType.Head;
+                
         private Point screenResolution;
 
         public Vector2[] SlotPositions;
@@ -41,24 +38,38 @@ namespace Barotrauma
             }
         }
 
-        private bool hidden;
-        public bool Hidden
+        private bool hidePersonalSlots;
+        private float hidePersonalSlotsState;
+        private GUIButton hideButton;
+        private Rectangle personalSlotArea;
+
+        public bool HidePersonalSlots
         {
-            get { return hidden; }
-            set { hidden = value; }
+            get { return hidePersonalSlots; }
+        }
+
+        public Rectangle PersonalSlotArea
+        {
+            get { return personalSlotArea; }
         }
         
         partial void InitProjSpecific(XElement element)
         {
-            if (toggleArrow == null)
+            hideButton = new GUIButton(new RectTransform(new Point((int)(30 * GUI.Scale), (int)(60 * GUI.Scale)), GUI.Canvas)
+            { AbsoluteOffset = HUDLayoutSettings.CrewArea.Location },
+                "", style: "UIToggleButton");
+            hideButton.Children.ForEach(c => c.SpriteEffects = SpriteEffects.FlipHorizontally);
+            hideButton.OnClicked += (GUIButton btn, object userdata) =>
             {
-                toggleArrow = new Sprite("Content/UI/inventoryAtlas.png", new Rectangle(585, 973, 67, 23), null);
-                toggleArrow.Origin = toggleArrow.size / 2;
-            }
+                hidePersonalSlots = !hidePersonalSlots;
+                foreach (GUIComponent child in btn.Children)
+                {
+                    child.SpriteEffects = hidePersonalSlots ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+                }
+                return true;
+            };
 
-            toggleArrowSlotIndex = MathHelper.Clamp(element.GetAttributeInt("arrowslot", 0), 0, capacity - 1);
-
-            hidden = true;
+            hidePersonalSlots = false;
 
             SlotPositions = new Vector2[SlotTypes.Length];
             CurrentLayout = Layout.Default;
@@ -160,6 +171,8 @@ namespace Barotrauma
         {
             if (slots[i].Disabled || (hideEmptySlot[i] && Items[i] == null)) return true;
 
+            if (PersonalSlots.HasFlag(SlotTypes[i]) && !personalSlotArea.Contains(slots[i].Rect.Center + slots[i].DrawOffset.ToPoint())) return true;
+
             //no need to draw the right hand slot if the item is in both hands
             if (Items[i] != null && SlotTypes[i] == InvSlotType.RightHand && IsInLimbSlot(Items[i], InvSlotType.LeftHand))
             {
@@ -185,66 +198,43 @@ namespace Barotrauma
             int bottomOffset = slotSize.Y + spacing * 2 + ContainedIndicatorHeight;
 
             if (slots == null) CreateSlots();
-
-            var upperSlots = InvSlotType.Card | InvSlotType.Headset | InvSlotType.InnerClothes | InvSlotType.Head;
+            
+            hideButton.Visible = false;
 
             switch (layout)
             {
                 case Layout.Default:
                     {
-                        int x = GameMain.GraphicsWidth / 2 - (SlotTypes.Count(s => !upperSlots.HasFlag(s)) * (slotSize.X + spacing) / 2);
-                        int upperX = HUDLayoutSettings.PortraitArea.X - slotSize.X / 2;
-                        
+                        int x = GameMain.GraphicsWidth / 2 - (SlotTypes.Count(s => !PersonalSlots.HasFlag(s)) * (slotSize.X + spacing) / 2);
+                        int upperX = HUDLayoutSettings.PortraitArea.X - slotSize.X;
+
+                        int hideButtonSlotIndex = -1;
                         for (int i = 0; i < SlotPositions.Length; i++)
                         {
-                            if (upperSlots.HasFlag(SlotTypes[i]))
+                            if (PersonalSlots.HasFlag(SlotTypes[i]))
                             {
                                 SlotPositions[i] = new Vector2(upperX, GameMain.GraphicsHeight - bottomOffset);
                                 upperX -= slotSize.X + spacing;
+                                personalSlotArea = (hideButtonSlotIndex == -1) ? 
+                                    new Rectangle(SlotPositions[i].ToPoint(), slotSize) :
+                                    Rectangle.Union(personalSlotArea, new Rectangle(SlotPositions[i].ToPoint(), slotSize));
+                                hideButtonSlotIndex = i;
                             }
                             else
                             {
                                 SlotPositions[i] = new Vector2(x, GameMain.GraphicsHeight - bottomOffset);
                                 x += slotSize.X + spacing;
                             }
-                            continue;
+                        }
 
-                            switch (SlotTypes[i])
-                            {
-                                case InvSlotType.Headset:
-                                    SlotPositions[i] = new Vector2(
-                                        HUDLayoutSettings.InventoryAreaUpper.Right - (slotSize.X + spacing),
-                                        HUDLayoutSettings.InventoryAreaUpper.Y + ContainedIndicatorHeight);
-                                    break;
-                                case InvSlotType.Card:
-                                    SlotPositions[i] = new Vector2(
-                                        HUDLayoutSettings.InventoryAreaUpper.Right - (slotSize.X + spacing) * 2,
-                                        HUDLayoutSettings.InventoryAreaUpper.Y + ContainedIndicatorHeight);
-                                    break;
-                                case InvSlotType.InnerClothes:
-                                    SlotPositions[i] = new Vector2(
-                                        HUDLayoutSettings.InventoryAreaUpper.Right - (slotSize.X + spacing) * 3,
-                                        HUDLayoutSettings.InventoryAreaUpper.Y + ContainedIndicatorHeight);
-                                    break;
-                                case InvSlotType.Head:
-                                    SlotPositions[i] = new Vector2(
-                                        HUDLayoutSettings.InventoryAreaUpper.Right - (slotSize.X + spacing) * 4,
-                                        HUDLayoutSettings.InventoryAreaUpper.Y + ContainedIndicatorHeight);
-                                    break;
-                                case InvSlotType.OuterClothes:
-                                    SlotPositions[i] = new Vector2(GameMain.GraphicsWidth / 2 - 200 * UIScale, GameMain.GraphicsHeight - bottomOffset);
-                                    break;
-                                case InvSlotType.LeftHand:
-                                    SlotPositions[i] = new Vector2(GameMain.GraphicsWidth / 2 - 130 * UIScale, GameMain.GraphicsHeight - bottomOffset);
-                                    break;
-                                case InvSlotType.RightHand:
-                                    SlotPositions[i] = new Vector2(GameMain.GraphicsWidth / 2 - 60 * UIScale, GameMain.GraphicsHeight - bottomOffset);
-                                    break;
-                                case InvSlotType.Any:
-                                    SlotPositions[i] = new Vector2(x, GameMain.GraphicsHeight - bottomOffset);
-                                    x += slotSize.X + spacing;
-                                    break;
-                            }
+                        if (hideButtonSlotIndex > -1)
+                        {
+                            hideButton.RectTransform.SetPosition(Anchor.TopLeft, Pivot.TopLeft);
+                            hideButton.RectTransform.NonScaledSize = new Point(slotSize.X / 2, slotSize.Y + slots[hideButtonSlotIndex].EquipButtonRect.Height);
+                            hideButton.RectTransform.AbsoluteOffset = new Point(
+                                personalSlotArea.Right + spacing, 
+                                personalSlotArea.Y - slots[hideButtonSlotIndex].EquipButtonRect.Height);
+                            hideButton.Visible = true;
                         }
                     }
                     break;
@@ -256,7 +246,7 @@ namespace Barotrauma
                         for (int i = 0; i < slots.Length; i++)
                         {
                             if (HideSlot(i)) continue;
-                            if (upperSlots.HasFlag(SlotTypes[i]))
+                            if (PersonalSlots.HasFlag(SlotTypes[i]))
                             {
                                 upperX -= slotSize.X + spacing;
                             }
@@ -270,7 +260,7 @@ namespace Barotrauma
                         for (int i = 0; i < SlotPositions.Length; i++)
                         {
                             if (HideSlot(i)) continue;
-                            if (upperSlots.HasFlag(SlotTypes[i]))
+                            if (PersonalSlots.HasFlag(SlotTypes[i]))
                             {
                                 SlotPositions[i] = new Vector2(upperX, GameMain.GraphicsHeight - bottomOffset * 2 - extraOffset - spacing * 2);
                                 upperX += slots[i].Rect.Width + spacing;
@@ -298,7 +288,7 @@ namespace Barotrauma
                         for (int i = 0; i < SlotPositions.Length; i++)
                         {
                             if (HideSlot(i)) continue;
-                            if (upperSlots.HasFlag(SlotTypes[i]))
+                            if (PersonalSlots.HasFlag(SlotTypes[i]))
                             {
                                 SlotPositions[i] = new Vector2(upperX, GameMain.GraphicsHeight - bottomOffset * 2 - spacing * 2);
                                 upperX += slots[i].Rect.Width + spacing;
@@ -381,13 +371,27 @@ namespace Barotrauma
             bool hoverOnInventory = GUI.MouseOn == null &&
                 ((selectedSlot != null && selectedSlot.IsSubSlot) || (draggingItem != null && (draggingSlot == null || !draggingSlot.MouseOn())));
             if (CharacterHealth.OpenHealthWindow != null) hoverOnInventory = true;
-
-            /*if (layout == Layout.Default)
+            
+            if (layout == Layout.Default && hideButton.Visible)
             {
+                hideButton.AddToGUIUpdateList();
+                hideButton.UpdateManually(deltaTime, alsoChildren: true);
+
+                hidePersonalSlotsState = hidePersonalSlots ? 
+                    Math.Min(hidePersonalSlotsState + deltaTime * 5.0f, 1.0f) : 
+                    Math.Max(hidePersonalSlotsState -  deltaTime * 5.0f, 0.0f);
+                
+                for (int i = 0; i < slots.Length; i++)
+                {
+                    if (!PersonalSlots.HasFlag(SlotTypes[i])) continue;
+                    slots[i].DrawOffset = Vector2.Lerp(Vector2.Zero, new Vector2(personalSlotArea.Width, 0.0f), hidePersonalSlotsState);
+                }
+                /*var arrowSlot = slots[arrowSlotIndex];
+
                 Rectangle arrowRect = new Rectangle(
-                    (int)(slots[toggleArrowSlotIndex].Rect.Center.X + slots[toggleArrowSlotIndex].DrawOffset.X - toggleArrow.size.X / 2),
-                    (int)(slots[toggleArrowSlotIndex].Rect.Y + slots[toggleArrowSlotIndex].DrawOffset.Y - 50 - toggleArrow.size.Y / 2), 
-                    (int)toggleArrow.size.X, (int)toggleArrow.size.Y);
+                    (int)(arrowSlot.Rect.X + arrowSlot.DrawOffset.X - toggleArrow.size.X / 2),
+                    (int)(arrowSlot.Rect.Y), 
+                    (int)toggleArrow.size.X, (int)arrowSlot.Rect.Height);
                 arrowRect.Inflate(30, 0);
 
                 if (arrowRect.Contains(PlayerInput.MousePosition))
@@ -416,28 +420,14 @@ namespace Barotrauma
                     slots.Any(s => PlayerInput.MousePosition.X > s.InteractRect.X - 10 && PlayerInput.MousePosition.X < s.InteractRect.Right + 10))
                 {
                     hoverOnInventory = true;
-                }
-            }*/
+                }*/
+            }
 
             if (hoverOnInventory) HideTimer = 0.5f;
             if (HideTimer > 0.0f) HideTimer -= deltaTime;
 
             for (int i = 0; i < capacity; i++)
             {
-                /*if (SlotTypes[i] == InvSlotType.Any || SlotTypes[i] == InvSlotType.OuterClothes ||
-                    SlotTypes[i] == InvSlotType.LeftHand || SlotTypes[i] == InvSlotType.RightHand)
-                {
-                    if (hidden && !hoverOnInventory && alignment == Alignment.Center && HideTimer <= 0.0f)
-                    {
-                        slots[i].DrawOffset =
-                            new Vector2(slots[i].DrawOffset.X, MathHelper.Lerp(slots[i].DrawOffset.Y, slots[i].Rect.Size.Y / 2 + slotSpriteRound.size.Y * UIScale, 10.0f * deltaTime));
-                    }
-                    else
-                    {
-                        slots[i].DrawOffset =
-                            new Vector2(slots[i].DrawOffset.X, MathHelper.Lerp(slots[i].DrawOffset.Y, 0, 10.0f * deltaTime));
-                    }
-                }*/
                 if (Items[i] != null && Character.Controlled?.Inventory == this &&
                     GUI.KeyboardDispatcher.Subscriber == null &&
                     slots[i].QuickUseKey != Keys.None && PlayerInput.KeyHit(slots[i].QuickUseKey))
@@ -720,19 +710,12 @@ namespace Barotrauma
             }
 
             base.Draw(spriteBatch);
-            
-            /*if (character == Character.Controlled)
+
+            if (hideButton != null && hideButton.Visible)
             {
-                for (int i = 0; i < capacity; i++)
-                {
-                    if ((selectedSlot == null || selectedSlot.SlotIndex != i) &&
-                        Items[i] != null && Items[i].CanUseOnSelf && character.HasSelectedItem(Items[i]))
-                    {
-                        useOnSelfButton[i - 3].DrawManually(spriteBatch);
-                    }
-                }
-            }*/
-            
+                hideButton.DrawManually(spriteBatch, alsoChildren: true);
+            }
+
             for (int i = 0; i < capacity; i++)
             {
                 if (HideSlot(i)) continue;
