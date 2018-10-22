@@ -63,6 +63,7 @@
   <FF_Wall_F identifier="FF_Wall_F" description="Machinery back wall" allowattachitems="true"
     width="16" height = "16" resizehorizontal="true" resizevertical="true">
     <sprite texture="Content/Map/FF_Wall_F.png" sourcerect="0,0,658,322" depth="1.0"/>
+    <specularsprite texture="Content/Map/wallspeculartest.png" sourcerect="0,0,658,322" depth="1.0"/>
   </FF_Wall_F>
 
   <FF_Wall_G1 identifier="FF_Wall_G1" description="General grey back wall 1" allowattachitems="true"

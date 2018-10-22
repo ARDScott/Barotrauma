@@ -9,6 +9,7 @@
     description="A machine capable of manufacturing a wide range of items out of basic raw materials.">
 
     <Sprite texture="Content/Items/Fabricators/FF_Fabricator.png" sourcerect="0,0,192,208" depth="0.8"/>
+    <SpecularSprite texture="Content/Items/Fabricators/fabricatorspeculartest.png" sourcerect="0,0,192,208" depth="0.8"/>
 
     <Fabricator canbeselected = "true" powerconsumption="500.0">
       <GuiFrame relativesize="0.4,0.4" minsize="600,400" maxsize="900,600" anchor="Center" style="ItemUI"/>

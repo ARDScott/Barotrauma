@@ -9,7 +9,7 @@ namespace Barotrauma
 {
     partial class LinkedSubmarine : MapEntity
     {
-        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true)
+        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true, bool specular = false)
         {
             if (!editing || wallVertices == null) return;
 

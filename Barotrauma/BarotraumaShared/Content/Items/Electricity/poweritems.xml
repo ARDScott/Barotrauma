@@ -2,6 +2,7 @@
 <Items>
   <Item name="Junction Box" identifier="junctionbox" category="Electrical" description="Serves as a hub for power distribution and relaying signals between devices.">
     <Sprite texture="FF_junctionbox.png" sourcerect="0,0,70,123" depth="0.8" canflipx="false" />
+    <SpecularSprite texture="junctionboxspeculartest.png" sourcerect="0,0,70,123" depth="0.8" canflipx="false" />
     <BrokenSprite texture="FF_junctionbox.png" sourcerect="70,0,70,123" depth="0.8" maxcondition="50" fadein="true" />
     <BrokenSprite texture="FF_junctionbox.png" sourcerect="140,0,70,123" depth="0.8" maxcondition="0" />
     <Repairable selectkey="Action" name="Electrical repairs" fixDurationHighSkill="3" fixDurationLowSkill="10" msg="ItemMsgRepairScrewdriver" hudpriority="10">

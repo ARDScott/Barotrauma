@@ -364,6 +364,14 @@ namespace Barotrauma
                         }
                         size = sprite.size;
                         break;
+                    case "specularsprite":
+                        string specularSpriteFolder = "";
+                        if (!subElement.GetAttributeString("texture", "").Contains("/"))
+                        {
+                            specularSpriteFolder = Path.GetDirectoryName(filePath);
+                        }
+                        specularSprite = new Sprite(subElement, specularSpriteFolder);
+                        break;
                     case "price":
                         string locationType = subElement.GetAttributeString("locationtype", "");
                         if (prices == null) prices = new Dictionary<string, PriceInfo>();

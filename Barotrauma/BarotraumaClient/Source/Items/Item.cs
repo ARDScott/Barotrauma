@@ -71,7 +71,7 @@ namespace Barotrauma
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true)
+        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true, bool specular = false)
         {
             if (!Visible) return;
             if (editing && !ShowItems) return;
@@ -79,7 +79,7 @@ namespace Barotrauma
             Color color = isHighlighted ? Color.Orange : GetSpriteColor();
             if (IsSelected && editing) color = Color.Lerp(color, Color.Gold, 0.5f);
 
-            Sprite activeSprite = prefab.sprite;
+            Sprite activeSprite = specular ? prefab.specularSprite : prefab.sprite;
             BrokenItemSprite fadeInBrokenSprite = null;
             float fadeInBrokenSpriteAlpha = 0.0f;
             if (condition < 100.0f)

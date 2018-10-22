@@ -6,6 +6,7 @@
     pickdistance="150">
 
     <Sprite texture="FF_Locker3.png" depth="0.84" sourcerect="0,0,48,80"/>
+    <SpecularSprite texture="lockerspeculartest.png" depth="0.84" sourcerect="0,0,48,80"/>
 
     <ItemContainer capacity="5" canbeselected="true" hideitems="true">
       <Containable identifiers="smallitem"/>
@@ -19,6 +20,7 @@
     pickdistance="150">
 
     <Sprite texture="FF_Locker3.png" depth="0.84" sourcerect="0,80,48,80"/>
+    <SpecularSprite texture="lockerspeculartest.png" depth="0.84" sourcerect="0,80,48,80"/>
 
     <ItemContainer capacity="5" canbeselected="true" hideitems="true">
       <Containable identifiers="smallitem"/>
@@ -32,6 +34,7 @@
     pickdistance="150">
 
     <Sprite texture="FF_Locker3.png" depth="0.84" sourcerect="48,0,48,160"/>
+    <SpecularSprite texture="lockerspeculartest.png" depth="0.84" sourcerect="48,0,48,160"/>
 
     <ItemContainer capacity="10" canbeselected="true" hideitems="true">
       <Containable identifiers="smallitem"/>
@@ -45,6 +48,7 @@
     pickdistance="150">
 
     <Sprite texture="FF_Locker3.png" depth="0.84" sourcerect="96,0,48,160"/>
+    <SpecularSprite texture="lockerspeculartest.png" depth="0.84" sourcerect="96,0,48,160"/>
 
     <ItemContainer capacity="10" canbeselected="true" hideitems="true">
       <Containable identifiers="smallitem"/>
@@ -58,6 +62,7 @@
     pickdistance="150">
 
     <Sprite texture="FF_Locker3.png" depth="0.84" sourcerect="0,0,148,160"/>
+    <SpecularSprite texture="lockerspeculartest.png" depth="0.84" sourcerect="0,0,148,160"/>
 
     <ItemContainer capacity="30" canbeselected="true" hideitems="true">
       <Containable identifiers="smallitem"/>

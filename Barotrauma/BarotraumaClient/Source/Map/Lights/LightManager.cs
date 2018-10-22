@@ -403,6 +403,30 @@ namespace Barotrauma.Lights
                     new Vector2(drawRect.Width, drawRect.Height),
                     Color.Gray, true);
             }
+            foreach (MapEntity me in MapEntity.mapEntityList)
+            {
+                if (!(me is Structure structure)) continue;
+                if (structure.prefab.specularSprite == null) continue;
+                structure.Draw(spriteBatch, editing: false, back: true, specular: true);
+            }
+            foreach (Item item in Item.ItemList)
+            {
+                if (item.prefab.specularSprite == null) continue;
+                item.Draw(spriteBatch, editing: false, back: true, specular: true);
+            }
+            foreach (Character c in Character.CharacterList)
+            {
+                foreach (Limb limb in c.AnimController.Limbs)
+                {
+                    if (limb.SpecularSprite == null) continue;
+                    limb.body.Draw(spriteBatch, limb.SpecularSprite, Color.White, limb.SpecularSprite.Depth, limb.Scale);
+                }
+            }
+            foreach (Item item in Item.ItemList)
+            {
+                if (item.prefab.specularSprite == null) continue;
+                item.Draw(spriteBatch, editing: false, back: false, specular: true);
+            }
 
             /*Submarine.DrawBack(spriteBatch);
 

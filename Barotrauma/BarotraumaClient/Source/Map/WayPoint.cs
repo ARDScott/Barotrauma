@@ -10,7 +10,7 @@ namespace Barotrauma
         private const int IconSize = 32;
         private static int[] iconIndices = { 3, 0, 1, 2 };
 
-        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true)
+        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true, bool specular = false)
         {
             if (!editing && !GameMain.DebugDraw) return;
 

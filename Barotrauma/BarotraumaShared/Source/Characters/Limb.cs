@@ -139,6 +139,7 @@ namespace Barotrauma
         public Vector2 StepOffset => ConvertUnits.ToSimUnits(limbParams.StepOffset) * ragdoll.RagdollParams.JointScale;
 
         public Sprite Sprite { get; protected set; }
+        public Sprite SpecularSprite { get; protected set; }
         public DeformableSprite DeformSprite { get; protected set; }
         public Sprite ActiveSprite => DeformSprite != null ? DeformSprite.Sprite : Sprite;
 
@@ -384,6 +385,9 @@ namespace Barotrauma
                         {
                             Sprite = new Sprite(subElement, "", spritePath);
                         }
+                        break;
+                    case "specularsprite":
+                        SpecularSprite = new Sprite(subElement);
                         break;
                     case "damagedsprite":
                         string damagedSpritePath = subElement.Attribute("texture").Value;

@@ -161,6 +161,9 @@ namespace Barotrauma
                         sp.canSpriteFlipY = subElement.GetAttributeBool("canflipy", true);
 
                         break;
+                    case "specularsprite":
+                        sp.specularSprite = new Sprite(subElement);
+                        break;
                     case "backgroundsprite":
                         sp.BackgroundSprite = new Sprite(subElement);
 

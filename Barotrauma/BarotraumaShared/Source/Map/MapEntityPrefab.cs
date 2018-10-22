@@ -20,6 +20,7 @@ namespace Barotrauma
         protected string identifier;
         
         public Sprite sprite;
+        public Sprite specularSprite;
 
         //the position where the structure is being placed (needed when stretching the structure)
         protected static Vector2 placePosition;

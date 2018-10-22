@@ -16,7 +16,7 @@ namespace Barotrauma
             }
         }
 
-        public override void Draw(SpriteBatch sb, bool editing, bool back = true)
+        public override void Draw(SpriteBatch sb, bool editing, bool back = true, bool specular = false)
         {
             if (GameMain.DebugDraw)
             {

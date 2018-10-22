@@ -174,7 +174,7 @@ namespace Barotrauma
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true)
+        public override void Draw(SpriteBatch spriteBatch, bool editing, bool back = true, bool specular = false)
         {
             if (back && Screen.Selected != GameMain.SubEditorScreen)
             {
