@@ -182,7 +182,10 @@
     <Content Include="$(MSBuildThisFileDirectory)Content\Characters\Testhuman\Testhuman.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="$(MSBuildThisFileDirectory)Content\Characters\Testhuman\Testhuman.xml" >
+    <Content Include="$(MSBuildThisFileDirectory)Content\Characters\Testhuman\Testhuman.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Content\Characters\Testhuman\Testhuman_Specular.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="$(MSBuildThisFileDirectory)Content\Characters\Tigerthresherboss\Ragdolls\TigerthresherbossDefaultRagdoll.xml">

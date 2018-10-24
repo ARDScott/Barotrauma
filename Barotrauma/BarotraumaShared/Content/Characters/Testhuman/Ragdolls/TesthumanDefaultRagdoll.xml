@@ -2,48 +2,63 @@
   <collider radius="15" />
   <limb id="0" name="UpperArmLeft" type="LeftArm" width="51" height="97" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="122,0,52,91" origin="0.5096154,0.532967" depth="0.1" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="122,0,52,91" origin="0.5096154,0.532967" depth="0.1" />
   </limb>
   <limb id="1" name="UpperArmRight" type="RightArm" width="51" height="97" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="122,0,52,91" origin="0.5096154,0.532967" depth="0" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="122,0,52,91" origin="0.5096154,0.532967" depth="0" />
   </limb>
   <limb id="2" name="Head" type="Head" width="65" height="65" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="19,4,62,70" origin="0.4758064,0.4642857" depth="0.006" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="19,4,62,70" origin="0.4758064,0.4642857" depth="0.006" />
   </limb>
   <limb id="3" name="UpperLegLeft" type="LeftThigh" width="66" height="124" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="224,10,59,117" origin="0.5249532,0.521382" depth="0.091" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="224,10,59,117" origin="0.5249532,0.521382" depth="0.091" />
   </limb>
   <limb id="4" name="UpperLegRight" type="RightThigh" width="66" height="124" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="224,10,59,117" origin="0.5249532,0.521382" depth="0.01" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="224,10,59,117" origin="0.5249532,0.521382" depth="0.01" />
   </limb>
   <limb id="5" name="Torso" type="Torso" width="83" height="142" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="7,77,85,148" origin="0.5117647,0.4797297" depth="0.005" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="7,77,85,148" origin="0.5117647,0.4797297" depth="0.005" />
   </limb>
   <limb id="6" name="LowerArmLeft" type="None" width="51" height="85" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="124,101,45,84" origin="0.4333333,0.5059524" depth="0.11" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="124,101,45,84" origin="0.4333333,0.5059524" depth="0.11" />
   </limb>
   <limb id="7" name="LowerArmRight" type="None" width="51" height="85" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="124,101,45,84" origin="0.4333333,0.5059524" depth="0" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="124,101,45,84" origin="0.4333333,0.5059524" depth="0" />
   </limb>
   <limb id="8" name="LowerLegLeft" type="LeftLeg" width="46" height="95" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="226,133,47,96" origin="0.6389006,0.4532793" depth="0.092" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="226,133,47,96" origin="0.6389006,0.4532793" depth="0.092" />
   </limb>
   <limb id="9" name="LowerLegRight" type="RightLeg" width="46" height="95" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="226,133,47,96" origin="0.6389006,0.4532793" depth="0.011" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="226,133,47,96" origin="0.6389006,0.4532793" depth="0.011" />
   </limb>
   <limb id="10" name="HandLeft" type="LeftHand" width="36" height="41" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="134,202,36,41" origin="0.5,0.5" depth="0.111" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="134,202,36,41" origin="0.5,0.5" depth="0.111" />
   </limb>
   <limb id="11" name="HandRight" type="RightHand" width="36" height="41" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="134,202,36,41" origin="0.5,0.5" depth="0" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="134,202,36,41" origin="0.5,0.5" depth="0" />
   </limb>
   <limb id="12" name="Waist" type="Waist" width="82" height="71" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="0,0" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="12,230,73,60" origin="0.5324506,0.4734446" depth="0.002" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="12,230,73,60" origin="0.5324506,0.4734446" depth="0.002" />
   </limb>
   <limb id="13" name="FootLeft" type="LeftFoot" width="56" height="46" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="7.84881,-14.24244" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="226,245,56,42" origin="0.4305088,0.5229385" depth="0.093" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="226,245,56,42" origin="0.4305088,0.5229385" depth="0.093" />
   </limb>
   <limb id="14" name="FootRight" type="RightFoot" width="56" height="46" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="0" mass="0" friction="0.3" restitution="0.05" density="10" pullpos="5.37043,-11.35345" refjoint="-1" ignorecollisions="False">
     <sprite texture="Content/Characters/Testhuman/Testhuman.png" sourcerect="226,245,56,42" origin="0.4305088,0.5229385" depth="0.012" />
+    <specularsprite texture="Content/Characters/Testhuman/Testhuman_Specular.png" sourcerect="226,245,56,42" origin="0.4305088,0.5229385" depth="0.012" />
   </limb>
   <joint name="Joint 0 - 03" limb1="5" limb2="0" limb1anchor="-1.99932,8.267936" limb2anchor="0.002393944,22.87126" canbesevered="True" limitenabled="False" upperlimit="NaN" lowerlimit="NaN" />
   <joint name="Joint 0 - 04" limb1="5" limb2="1" limb1anchor="-1.99932,8.267936" limb2anchor="0.002393944,22.87126" canbesevered="True" limitenabled="False" upperlimit="NaN" lowerlimit="NaN" />
