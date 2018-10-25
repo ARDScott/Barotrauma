@@ -299,12 +299,8 @@ namespace Barotrauma
         {
             get { return pullJoint.LocalAnchorA; }
         }
-        
-        public string Name
-        {
-            get;
-            private set;
-        }
+
+        public string Name => limbParams.Name;
 
         public Dictionary<string, SerializableProperty> SerializableProperties
         {
@@ -321,7 +317,6 @@ namespace Barotrauma
             dir = Direction.Right;
             body = new PhysicsBody(limbParams, Scale);
             type = limbParams.Type;
-            Name = type.ToString();
             if (limbParams.IgnoreCollisions)
             {
                 body.CollisionCategories = Category.None;
