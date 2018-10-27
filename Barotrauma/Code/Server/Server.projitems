@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>f59bce22-5c31-42bd-9007-069e5054c0dc</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Server</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Camera.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Characters\Character.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\DebugConsole.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\GameMain.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\GameSession\MultiPlayerCampaign.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Items\Components\ItemComponent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Items\Components\ItemLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Items\Components\Machines\Steering.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Map\Hull.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Networking\GameClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Networking\GameServer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Networking\NetworkMember.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Networking\Voting.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\PlayerInput.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Program.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Screens\NetLobbyScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Screens\UnimplementedScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Color.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Graphics\SpriteEffects.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Input\KeyboardState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Input\Keys.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Input\KeyState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Point.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Quaternion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Rectangle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\MonogameTypes\Vector4.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Source\Utils\XnaToConsoleColor.cs" />
+  </ItemGroup>
+</Project>
