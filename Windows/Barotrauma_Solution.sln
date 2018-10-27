@@ -40,13 +40,22 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Server", "..\Barotrauma\Cod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Projects\Server\Server.csproj", "{85232B20-074D-4723-B0C6-91495391E448}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{ABC4AC24-B4FD-4550-9125-519FE20A3E12}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Content", "..\Barotrauma\Content\Content.shproj", "{09C685CA-4BBF-4166-840A-80FEAB957E55}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\Barotrauma\Code\Client\Client.projitems*{008c0f83-e914-4966-9135-ea885059edd8}*SharedItemsImports = 4
 		..\Barotrauma\Code\Shared\Shared.projitems*{008c0f83-e914-4966-9135-ea885059edd8}*SharedItemsImports = 4
+		..\Barotrauma\Content\Content.projitems*{008c0f83-e914-4966-9135-ea885059edd8}*SharedItemsImports = 4
+		..\Barotrauma\Content\Content.projitems*{09c685ca-4bbf-4166-840a-80feab957e55}*SharedItemsImports = 13
 		..\Libraries\SharpFont\Source\SharpFontShared\SharpFontShared.projitems*{2e4773b7-961a-4328-9d77-9749f9071ca2}*SharedItemsImports = 13
 		..\Barotrauma\Code\Shared\Shared.projitems*{561357c2-db28-4e01-b275-6bf545f70491}*SharedItemsImports = 13
 		..\Barotrauma\Code\Client\Client.projitems*{5e461e37-0c9c-4580-bf99-b81ba797d417}*SharedItemsImports = 13
+		..\Barotrauma\Code\Server\Server.projitems*{85232b20-074d-4723-b0c6-91495391e448}*SharedItemsImports = 4
 		..\Barotrauma\Code\Shared\Shared.projitems*{85232b20-074d-4723-b0c6-91495391e448}*SharedItemsImports = 4
+		..\Barotrauma\Content\Content.projitems*{85232b20-074d-4723-b0c6-91495391e448}*SharedItemsImports = 4
 		..\Libraries\SharpFont\Source\SharpFontShared\SharpFontShared.projitems*{c293db32-fa42-486d-b128-5a12522fae4e}*SharedItemsImports = 4
 		..\Barotrauma\Code\Server\Server.projitems*{f59bce22-5c31-42bd-9007-069e5054c0dc}*SharedItemsImports = 13
 	EndGlobalSection
@@ -106,6 +115,8 @@ Global
 		{008C0F83-E914-4966-9135-EA885059EDD8} = {DB635083-A54B-4E89-A3D8-3C9AD3C28FA3}
 		{F59BCE22-5C31-42BD-9007-069E5054C0DC} = {F48307F6-D8EA-4C1B-9AF0-DD2B2935B439}
 		{85232B20-074D-4723-B0C6-91495391E448} = {DB635083-A54B-4E89-A3D8-3C9AD3C28FA3}
+		{ABC4AC24-B4FD-4550-9125-519FE20A3E12} = {F35DF9BF-0BED-4FEF-A51C-DD83C531882F}
+		{09C685CA-4BBF-4166-840A-80FEAB957E55} = {ABC4AC24-B4FD-4550-9125-519FE20A3E12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17032EAB-554B-4B44-A4F6-EFB177ACAB7A}

@@ -30,6 +30,12 @@ namespace Barotrauma
         static void Main()
         {
             GameMain game = null;
+
+#if DEBUG
+            game = new GameMain();
+            game.GraphicsDevice.PresentationParameters.IsFullScreen = false;
+            game.Run();
+#else
             try
             {
                 game = new GameMain();
@@ -41,10 +47,7 @@ namespace Barotrauma
                 CrashDump(null, "crashreport.log", e);
                 return;
             }
-            
-#if DEBUG
-            game.Run();
-#else
+
             bool attemptRestart = false;
 
             do

@@ -75,11 +75,11 @@
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\Libraries\NuGet\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>..\..\..\Libraries\NuGet\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\SharpDX.dll</HintPath>
-    </Reference>
     <Reference Include="NVorbis">
       <HintPath>..\..\..\Libraries\NuGet\NVorbis.0.8.5.0\lib\NVorbis.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\..\..\Libraries\NuGet\SharpDX.4.0.1\lib\net45\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct2D1, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\..\..\Libraries\NuGet\SharpDX.Direct2D1.4.0.1\lib\net45\SharpDX.Direct2D1.dll</HintPath>
@@ -181,8 +181,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
-  <Import Project="..\..\..\Barotrauma\Code\Client\Client.projitems" Label="Client" />
+  <Import Project="..\..\..\Barotrauma\Code\Client\Client.projitems" Label="Shared" />
   <Import Project="..\..\..\Barotrauma\Code\Shared\Shared.projitems" Label="Shared" />
+  <Import Project="..\..\..\Barotrauma\Content\Content.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\Libraries\NuGet\GameAnalytics.Mono.SDK.1.1.12\build\net45\GameAnalytics.Mono.SDK.targets" Condition="Exists('..\..\..\Libraries\NuGet\GameAnalytics.Mono.SDK.1.1.12\build\net45\GameAnalytics.Mono.SDK.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
