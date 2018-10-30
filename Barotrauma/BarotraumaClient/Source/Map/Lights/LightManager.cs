@@ -372,7 +372,7 @@ namespace Barotrauma.Lights
             graphics.Clear(Color.Gray);
             graphics.BlendState = BlendState.AlphaBlend;
 
-            spriteBatch.Begin(sortMode: SpriteSortMode.Deferred, blendState: BlendState.AlphaBlend, transformMatrix: spriteBatchTransform);
+            spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront, blendState: BlendState.AlphaBlend, transformMatrix: spriteBatchTransform);
 
             if (Level.Loaded != null)
             {
@@ -401,7 +401,7 @@ namespace Barotrauma.Lights
                 GUI.DrawRectangle(spriteBatch,
                     new Vector2(drawRect.X, -drawRect.Y),
                     new Vector2(drawRect.Width, drawRect.Height),
-                    Color.Gray, true);
+                    Color.Gray, true, depth: 1.0f);
             }
             foreach (MapEntity me in MapEntity.mapEntityList)
             {
@@ -414,29 +414,19 @@ namespace Barotrauma.Lights
                 if (item.prefab.specularSprite == null) continue;
                 item.Draw(spriteBatch, editing: false, back: true, specular: true);
             }
-            foreach (Character c in Character.CharacterList)
-            {
-                foreach (Limb limb in c.AnimController.Limbs)
-                {
-                    if (limb.SpecularSprite == null) continue;
-                    limb.body.Draw(spriteBatch, limb.SpecularSprite, Color.White, limb.SpecularSprite.Depth, limb.Scale);
-                }
-            }
             foreach (Item item in Item.ItemList)
             {
                 if (item.prefab.specularSprite == null) continue;
                 item.Draw(spriteBatch, editing: false, back: false, specular: true);
             }
-
-            /*Submarine.DrawBack(spriteBatch);
-
             foreach (Character c in Character.CharacterList)
             {
-                c.Draw(spriteBatch, cam);
-            }
-
-            Submarine.DrawFront(spriteBatch);*/
-
+                foreach (Limb limb in c.AnimController.Limbs)
+                {
+                    if (limb.SpecularSprite == null) continue;
+                    limb.body.Draw(spriteBatch, limb.SpecularSprite, Color.White, limb.Sprite.Depth, limb.Scale);
+                }
+            }            
             spriteBatch.End();
 
             graphics.SetRenderTarget(null);
